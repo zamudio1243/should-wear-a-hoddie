@@ -4,19 +4,21 @@ import OpenWeatherAPI from "openweather-api-node";
 const qrcode = require("qrcode-terminal");
 
 const weather = new OpenWeatherAPI({
-  key: "2c3321a0d4316ec39f5a4f7ca3d32465",
-  locationName: "Zacatecas City, MX",
+  key: "",
   units: "metric",
+  coordinates: {
+    lat: 22.776,
+    lon: -102.572,
+  },
 });
+
+const client = new Client();
 
 /**
  * Start Express server.
  */
 const server = app.listen(app.get("port"), () => {
-  const client = new Client();
-
   client.on("qr", (qr: any) => {
-    // Generate and scan this code with your phone
     qrcode.generate(qr, { small: true });
   });
 
